@@ -37,7 +37,7 @@ jobs :
 
       - name: terraform init
         run: |
-          cd module
+          cd modules
           terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}"" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
 
 
@@ -63,11 +63,11 @@ jobs :
 
       - name: terraform plan
         run: |
-          cd module
+          cd modules
           terraform plan
       
       - name: terraform apply
         run: |
-          cd module
+          cd modules
           terraform apply -auto-approve
         
