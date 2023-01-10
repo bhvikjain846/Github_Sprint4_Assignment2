@@ -6,13 +6,18 @@ on :
   
   workflow_dispatch:
     inputs : 
+      # bucket :
+      #   description: "Enter your bucket name : "
+      #   required: true  
+      #   type: string
+
       region :
         description: "Enter your region name : "
         required: true  
-        type: string  
+        type: string    
 
 env :
-  bucket : bhvik-s3
+  bucket : bhviks3-batch6
   tfstate_file : new.tfstate
   region: ${{ github.event.inputs.region }}
   
