@@ -6,10 +6,10 @@ on :
   
   workflow_dispatch:
     inputs : 
-      bucketname :
-        description: "Enter your bucket name : "
-        required: true  
-        type: string
+      # bucketname :
+      #   description: "Enter your bucket name : "
+      #   required: true  
+      #   type: string
 
       region :
         description: "Enter your region name : "
@@ -17,7 +17,8 @@ on :
         type: string    
 
 env :
-  bucket : ${{ github.event.inputs.bucketname }}
+  # bucket : ${{ github.event.inputs.bucketname }}
+  bucket : bhvikjain123
   tfstate_file : new.tfstate
   region: ${{ github.event.inputs.region }}
   
