@@ -18,7 +18,7 @@ on :
 
 env :
   # bucket : ${{ github.event.inputs.bucketname }}
-  bucket : bhvikjain123
+  bucket : bhvik12jain
   tfstate_file : new.tfstate
   region: ${{ github.event.inputs.region }}
   
