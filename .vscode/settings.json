@@ -1,5 +1,8 @@
 {
     "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///d%3A/Github_Sprint4/New%20folder/.github/workflows/deploy.yml"
+        "https://json.schemastore.org/github-workflow.json": [
+            "file:///d%3A/Github_Sprint4/New%20folder/.github/workflows/deploy.yml",
+            "file:///d%3A/Github_Sprint4/Github_Sprint4_Assignment2/.github/workflows/destroy.yml"
+        ]
     }
 }
