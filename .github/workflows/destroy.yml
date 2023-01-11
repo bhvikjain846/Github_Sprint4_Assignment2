@@ -41,5 +41,4 @@ jobs :
 
       - name: destroy
         run: |
-          cd modules
-          terraform destroy -auto-approve 
+          terraform destroy -auto-approve -var-file="backend.tf"
