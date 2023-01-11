@@ -11,6 +11,8 @@ on :
         type: string    
 
 env :
+  bucket : bhvik123jain
+  tfstate_file : new.tfstate
   region: ${{ github.event.inputs.region }}
 
 jobs :
