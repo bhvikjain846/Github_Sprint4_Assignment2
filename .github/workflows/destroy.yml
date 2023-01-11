@@ -42,4 +42,4 @@ jobs :
       - name: destroy
         run: |
           cd modules
-          terraform destroy -auto-approve -var-file="terraform.tfvars"
+          terraform destroy -auto-approve 
