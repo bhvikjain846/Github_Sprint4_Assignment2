@@ -68,19 +68,27 @@ jobs :
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.region }}
 
-      - name: terraform init
-        run: |
+      
+      - run: |
           cd modules
           rm -rf .terraform
           terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
-
+      
       - name: terraform plan
         run: |
-          cd modules
           terraform plan
+
+      # - name: terraform plan
+      #   run: |
+      #     cd modules
+      #     terraform plan
       
       - name: terraform apply
         run: |
-          cd modules
           terraform apply -auto-approve
+        
+      # - name: terraform apply
+      #   run: |
+      #     cd modules
+      #     terraform apply -auto-approve
         
