@@ -44,7 +44,7 @@ jobs :
       - name: terraform init
         run: |
           cd modules
-          terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
+          terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}" -backend-config="profile = "terraform""
 
 
   plan : 
