@@ -31,6 +31,12 @@ jobs :
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.region }}
 
+      - name : terraform init
+        run: |
+          terraform init -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
+          cd modules
+          terraform init
+
       - name: terraform destroy
         run: |
           terraform destroy -auto-approve
