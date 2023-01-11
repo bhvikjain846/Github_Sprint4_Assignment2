@@ -6,18 +6,12 @@ on :
   
   workflow_dispatch:
     inputs : 
-      # bucketname :
-      #   description: "Enter your bucket name : "
-      #   required: true  
-      #   type: string
-
       region :
         description: "Enter your region name : "
         required: true  
         type: string    
 
 env :
-  # bucket : ${{ github.event.inputs.bucketname }}
   bucket : bhvik123jain
   tfstate_file : new.tfstate
   region: ${{ github.event.inputs.region }}
@@ -25,9 +19,6 @@ env :
 jobs :
   news3bucket : 
     runs-on : ubuntu-latest
-    
-    needs : init
-
     steps:
       - uses: actions/checkout@v3 
       - name: Terraform hashicorp setup
