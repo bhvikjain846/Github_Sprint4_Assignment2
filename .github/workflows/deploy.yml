@@ -74,34 +74,34 @@ jobs :
           terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
 
 
-  plan-apply : 
-    needs : init
+  # plan-apply : 
+  #   needs : init
 
-    runs-on : ubuntu-latest
+  #   runs-on : ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3 
-      - name: Terraform hashicorp setup
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.1.7
+  #   steps:
+  #     - uses: actions/checkout@v3 
+  #     - name: Terraform hashicorp setup
+  #       uses: hashicorp/setup-terraform@v2
+  #       with:
+  #         terraform_version: 1.1.7
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: ${{ env.region }}
+  #     - name: Configure AWS Credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+  #         aws-region: ${{ env.region }}
       
-      - name : terraform init
-        run: |
-          terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
+  #     - name : terraform init
+  #       run: |
+  #         terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
       
-      - name: terraform plan
-        run: |
-          terraform plan
+  #     - name: terraform plan
+  #       run: |
+  #         terraform plan
       
-      - name: terraform apply
-        run: |
-          terraform apply -auto-approve
+  #     - name: terraform apply
+  #       run: |
+  #         terraform apply -auto-approve
