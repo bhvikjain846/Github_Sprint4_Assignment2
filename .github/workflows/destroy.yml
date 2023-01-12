@@ -42,3 +42,9 @@ jobs :
         run: |
           cd modules
           terraform destroy -auto-approve
+        
+        uses:
+          bhvikjain846/terraform-destroy-actions@v3
+        with:
+          org_name: 'bhvikjain846'
+          repo_name: 'Github_Sprint4_Assignment2'
