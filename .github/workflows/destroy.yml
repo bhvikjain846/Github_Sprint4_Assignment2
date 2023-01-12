@@ -11,8 +11,8 @@ on :
         type: string    
 
 env :
-  # bucket : bhvik123jain
-  # tfstate_file : new.tfstate
+  bucket : bhvik123jain
+  tfstate_file : new.tfstate
   region: ${{ github.event.inputs.region }}
 
 jobs :
@@ -35,11 +35,9 @@ jobs :
 
       - name : init
         run: |
-          cd S3
-          terraform init
-
+          terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
+      
       - name: destroy
         run: |
-          cd S3
           terraform destroy -auto-approve 
           
