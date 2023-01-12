@@ -94,8 +94,8 @@ jobs :
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.region }}
       
-      - name : terraform init
-        run: |
+      
+      - run:
           terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
       
       - name: terraform plan
