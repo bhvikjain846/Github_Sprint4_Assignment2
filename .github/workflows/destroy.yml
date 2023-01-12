@@ -41,5 +41,5 @@ jobs :
       - name: destroy
         run: |
           cd S3
-          terraform destroy -auto-approve
+          terraform destroy -auto-approve 
           
