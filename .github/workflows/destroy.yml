@@ -35,11 +35,13 @@ jobs :
 
       - name : init
         run: |
+          terraform init
           cd modules
           terraform init
 
       - name: destroy
         run: |
+          terraform destroy
           cd modules
           terraform destroy -auto-approve
           
