@@ -35,13 +35,11 @@ jobs :
 
       - name : init
         run: |
-          terraform init 
           cd S3
           terraform init
       
       - name: destroy
         run: |
-          terraform destroy -auto-approve 
           cd S3
-          terraform destroy -auto-approve 
+          terraform destroy -auto-approve -var-file="terraform.tfvars"
           
