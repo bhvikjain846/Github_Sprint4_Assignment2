@@ -36,20 +36,20 @@ jobs :
 
       - name: init
         run: |
-          cd modules
+          cd S3
           terraform init
       
       - name: plan
         run: |
-          cd modules
+          cd S3
           terraform plan
         
       - name: apply
         run: |
-          cd modules
+          cd S3
           terraform apply -auto-approve
 
-  init_plan_apply :
+  init :
     needs : news3bucket
 
     runs-on : ubuntu-latest
