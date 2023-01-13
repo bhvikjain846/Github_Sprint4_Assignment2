@@ -50,7 +50,7 @@ jobs :
           terraform apply -auto-approve
 
   init_apply :
-
+    needs : news3bucket
     runs-on : ubuntu-latest
 
     steps:
