@@ -13,7 +13,7 @@ on :
 
 env :
   bucket : bhvik123jain
-  tfstate_file : new.tfstate
+  tfstate_file : file.txt
   region: ${{ github.event.inputs.region }}
   
 jobs :
@@ -37,8 +37,8 @@ jobs :
       - name: init
         run: |
           cd Module
-          terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
-      
+          terraform init 
+
       - name: plan
         run: |
           cd Module
@@ -49,32 +49,32 @@ jobs :
           cd Module
           terraform apply -auto-approve
 
-  # init_apply :
-  #   needs : news3bucket
+  init_apply :
+    needs : news3bucket
 
-  #   runs-on : ubuntu-latest
+    runs-on : ubuntu-latest
 
-  #   steps:
-  #     - uses: actions/checkout@v3 
-  #     - name: Terraform hashicorp setup
-  #       uses: hashicorp/setup-terraform@v2
-  #       with:
-  #         terraform_version: 1.1.7
+    steps:
+      - uses: actions/checkout@v3 
+      - name: Terraform hashicorp setup
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.1.7
 
-  #     - name: Configure AWS Credentials
-  #       uses: aws-actions/configure-aws-credentials@v1
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-  #         aws-region: ${{ env.region }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ env.region }}
 
-  #     - name: init
-  #       run: |
-  #         cd S3
-  #         terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
+      - name: init
+        run: |
+          cd Module
+          terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
       
-  #     - name: apply
-  #       run: |
-  #         cd S3
-  #         terraform apply -auto-approve
+      - name: apply
+        run: |
+          cd Module
+          terraform apply -auto-approve
