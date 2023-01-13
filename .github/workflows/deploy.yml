@@ -16,7 +16,7 @@ env :
   region: ${{ github.event.inputs.region }}
   
 jobs :
-  news3bucket : 
+  init-plan-apply : 
     runs-on : ubuntu-latest
     steps:
       - uses: actions/checkout@v3 
