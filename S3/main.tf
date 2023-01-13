@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "b" {
-    bucket = var.bucket_name
+    bucket = "bhvik123jain"
     tags = {
-        Owner = var.tag_owner
-        Purpose = var.tag_purpose
+        Owner = "bhvik.jain@cloudeq.com"
+        Purpose = "Training batch6"
     }
 }

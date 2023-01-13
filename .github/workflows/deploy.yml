@@ -36,17 +36,17 @@ jobs :
 
       - name: init
         run: |
-          cd Module
+          cd S3
           terraform init
 
       - name: plan
         run: |
-          cd Module
+          cd S3
           terraform plan
         
       - name: apply
         run: |
-          cd Module
+          cd S3
           terraform apply -auto-approve
 
   init_apply :
@@ -70,12 +70,8 @@ jobs :
 
       - name: init
         run: |
-          cd Module
-          terraform init
-          cd S3
           terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
       
       - name: apply
         run: |
-          cd Module
           terraform apply -auto-approve

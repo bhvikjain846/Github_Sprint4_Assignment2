@@ -1,19 +1,19 @@
 name : destroy
 on :
-  # push : 
-  #   branches : ["master"]
+  push : 
+    branches : ["master"]
   
-  workflow_dispatch:
-    inputs : 
-      region :
-        description: "Enter your region name : "
-        required: true  
-        type: string    
+  # workflow_dispatch:
+  #   inputs : 
+  #     region :
+  #       description: "Enter your region name : "
+  #       required: true  
+  #       type: string    
 
 env :
   bucket : bhvik123jain
   tfstate_file : new.tfstate
-  region: ${{ github.event.inputs.region }}
+  region: ap-south-1
 
 jobs :
   destroy : 
@@ -35,10 +35,10 @@ jobs :
 
       - name : init
         run: |
-          cd Module
+          cd S3
           terraform init 
 
       - name: destroy
         run: |
-          cd Module
+          cd S3
           terraform destroy -auto-approve 
