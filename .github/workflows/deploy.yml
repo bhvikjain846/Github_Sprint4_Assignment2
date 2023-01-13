@@ -75,5 +75,5 @@ jobs :
       
       - name: apply
         run: |
-          cd S3
+          cd Module
           terraform apply -auto-approve
