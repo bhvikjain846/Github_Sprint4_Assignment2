@@ -71,8 +71,10 @@ jobs :
 
       - name: init
         run: |
+          cd S3
           terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
       
       - name: apply
         run: |
+          cd S3
           terraform apply -auto-approve

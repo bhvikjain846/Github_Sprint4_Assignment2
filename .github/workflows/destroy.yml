@@ -35,9 +35,8 @@ jobs :
 
       - name : init
         run: |
-          terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
           cd S3
-          terraform init
+          terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
       
       - name: destroy
         run: |
