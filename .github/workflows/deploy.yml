@@ -13,7 +13,7 @@ on :
 
 env :
   bucket : bhvik123jain
-  tfstate_file : file.txt
+  tfstate_file : new.tfstate
   region: ${{ github.event.inputs.region }}
   
 jobs :
@@ -37,7 +37,7 @@ jobs :
       - name: init
         run: |
           cd Module
-          terraform init 
+          terraform init -reconfigure
 
       - name: plan
         run: |
@@ -50,7 +50,6 @@ jobs :
           terraform apply -auto-approve
 
   init_apply :
-    needs : news3bucket
 
     runs-on : ubuntu-latest
 
