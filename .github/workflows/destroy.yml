@@ -35,11 +35,11 @@ jobs :
 
       - name : init
         run: |
-          cd S3
+          cd Module
           terraform init -reconfigure -backend-config="bucket=${{ env.bucket }}" -backend-config="key=${{ env.tfstate_file}}" -backend-config="region=${{ env.region }}"
       
       - name: destroy
         run: |
-          cd S3
+          cd Module
           terraform destroy -auto-approve -var-file="terraform.tfvars"
           
